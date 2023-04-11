@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme: TAppTheme.lightTheme,
       darkTheme: TAppTheme.darkTheme,
-      themeMode: ThemeMode.light,
+      themeMode: ThemeMode.dark,
       home: const AppHome(),
     );
   }
@@ -58,7 +58,9 @@ class AppHome extends StatelessWidget {
             ),
             const Padding(
               padding: EdgeInsets.all(20.0),
-              child: Image(image: AssetImage("assets/images/books.png")),
+              child: Image(
+                  image: AssetImage(
+                      "assets/images/on_boarding_images/Download_2.png")),
             ),
           ],
         ),
