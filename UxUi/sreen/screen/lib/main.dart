@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme: TAppTheme.lightTheme,
       darkTheme: TAppTheme.darkTheme,
-      themeMode: ThemeMode.light,
+      themeMode: ThemeMode.dark,
       home: const AppHome(),
     );
   }
@@ -26,7 +26,7 @@ class AppHome extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          title: const Text(".appable/"),
+          title: const Text("Dashboard"),
           leading: const Icon(Icons.ondemand_video)),
       floatingActionButton: FloatingActionButton(
         child: const Icon(Icons.add_shopping_cart_outlined),
