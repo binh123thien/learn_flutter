@@ -13,8 +13,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme: TAppTheme.lightTheme,
       darkTheme: TAppTheme.darkTheme,
-      themeMode: ThemeMode.dark,
-      home: AppHome(),
+      themeMode: ThemeMode.light,
+      home: const AppHome(),
     );
   }
 }
@@ -38,15 +38,15 @@ class AppHome extends StatelessWidget {
           children: [
             Text(
               "Heading",
-              style: Theme.of(context).textTheme.headline2,
+              style: Theme.of(context).textTheme.bodyMedium,
             ),
             Text(
               "Sub-heading",
-              style: Theme.of(context).textTheme.subtitle2,
+              style: Theme.of(context).textTheme.bodyMedium,
             ),
             Text(
               "Paragraph",
-              style: Theme.of(context).textTheme.bodyText1,
+              style: Theme.of(context).textTheme.bodyMedium,
             ),
             ElevatedButton(
               onPressed: () {},
