@@ -58,14 +58,18 @@ class _CalculatorAppState extends State<CalculatorApp> {
         print(eval); // kiểm tra kết quả tính được
 
         output = eval.toString();
+        //đẩy giá trị vừa tính lên input
+        print(output);
+        input = output;
       } catch (e) {
         output = 'Error';
       }
     } else {
       if (input == "0") {
         input = buttonPress;
-      } else
+      } else {
         input = input + buttonPress;
+      }
     }
     setState(() {});
   }
