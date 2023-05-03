@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:screen/src/features/authentication/screens/welcome/welcome_screen.dart';
 import 'package:screen/src/utils/theme/theme.dart';
 
 void main() {
@@ -14,57 +15,8 @@ class MyApp extends StatelessWidget {
       theme: TAppTheme.lightTheme,
       darkTheme: TAppTheme.darkTheme,
       themeMode: ThemeMode.dark,
-      home: const AppHome(),
-    );
-  }
-}
-
-class AppHome extends StatelessWidget {
-  const AppHome({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-          title: const Text("Dashboard"),
-          leading: const Icon(Icons.ondemand_video)),
-      floatingActionButton: FloatingActionButton(
-        child: const Icon(Icons.add_shopping_cart_outlined),
-        onPressed: () {},
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: ListView(
-          children: [
-            Text(
-              "Heading",
-              style: Theme.of(context).textTheme.bodyMedium,
-            ),
-            Text(
-              "Sub-heading",
-              style: Theme.of(context).textTheme.bodyMedium,
-            ),
-            Text(
-              "Paragraph",
-              style: Theme.of(context).textTheme.bodyMedium,
-            ),
-            ElevatedButton(
-              onPressed: () {},
-              child: const Text("Elevated Button"),
-            ),
-            OutlinedButton(
-              onPressed: () {},
-              child: const Text("Outlined Button"),
-            ),
-            const Padding(
-              padding: EdgeInsets.all(20.0),
-              child: Image(
-                  image: AssetImage(
-                      "assets/images/on_boarding_images/Download_2.png")),
-            ),
-          ],
-        ),
-      ),
+      debugShowCheckedModeBanner: false,
+      home: const WelcomeScreen(),
     );
   }
 }
