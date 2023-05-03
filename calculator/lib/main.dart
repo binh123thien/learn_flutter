@@ -1,5 +1,6 @@
 import 'package:calculator/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:math_expressions/math_expressions.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -18,6 +19,51 @@ class CalculatorApp extends StatefulWidget {
 }
 
 class _CalculatorAppState extends State<CalculatorApp> {
+//variables
+  var input = '0';
+  var output = '0';
+
+//function click
+  OnButtonClick(buttonPress) {
+    //check click button thi in so
+    print(buttonPress);
+    if (buttonPress == "AC") {
+      input = '0';
+      output = '0';
+    } else if (buttonPress == "⟵") {
+      input = input.substring(0, input.length - 1);
+    } else if (buttonPress == "=") {
+      // tạo biến để tính toán
+      var userInput = input;
+      //khi nhập input x đổi thành '*' để tính toán
+      userInput = input.replaceAll("x", "*");
+
+      // tạo expression để phân tích tính toán (phải pub get và thêm thư viện math_express)
+      try {
+        Parser p = Parser();
+        // tạo được biểu thức tính toán dựa vào input nhập vào
+        Expression exp = p.parse(userInput);
+        print(exp); // kiểm tra biểu thức
+
+        // analyze and evaluate the expression
+        ContextModel cm = ContextModel();
+        // Evaluate expression:
+        double eval = exp.evaluate(EvaluationType.REAL, cm);
+        print(eval); // kiểm tra kết quả tính được
+
+        output = eval.toString();
+      } catch (e) {
+        output = 'Error';
+      }
+    } else {
+      if (input == "0") {
+        input = buttonPress;
+      } else
+        input = input + buttonPress;
+    }
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
 // initial 2 varible full screen
@@ -50,15 +96,15 @@ class _CalculatorAppState extends State<CalculatorApp> {
                     mainAxisAlignment: MainAxisAlignment.end,
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
-                      const Text(
-                        'Input',
+                      Text(
+                        input,
                         style: TextStyle(fontSize: 48, color: Colors.white),
                       ),
                       const SizedBox(
                         height: 20,
                       ),
                       Text(
-                        'Output',
+                        output,
                         style: TextStyle(
                             fontSize: 34, color: Colors.white.withOpacity(0.7)),
                       ),
@@ -76,7 +122,7 @@ class _CalculatorAppState extends State<CalculatorApp> {
                     buttonBgColor: operatorColor,
                     tColor: orangeColor),
                 button(
-                    text: "<",
+                    text: "⟵",
                     buttonBgColor: operatorColor,
                     tColor: orangeColor),
                 button(text: "", buttonBgColor: Colors.black),
@@ -146,7 +192,7 @@ class _CalculatorAppState extends State<CalculatorApp> {
                   borderRadius: BorderRadius.circular(12)),
               backgroundColor: buttonBgColor,
               padding: EdgeInsets.all(22)),
-          onPressed: () {},
+          onPressed: () => OnButtonClick(text),
           child: Text(
             text,
             style: TextStyle(
