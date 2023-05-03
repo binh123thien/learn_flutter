@@ -31,7 +31,13 @@ class _CalculatorAppState extends State<CalculatorApp> {
       input = '0';
       output = '0';
     } else if (buttonPress == "⟵") {
-      input = input.substring(0, input.length - 1);
+      if (input.isNotEmpty) {
+        input = input.substring(0, input.length - 1);
+        // input.isEmpty == ( input == '' )
+        if (input.isEmpty) {
+          input = '0';
+        }
+      }
     } else if (buttonPress == "=") {
       // tạo biến để tính toán
       var userInput = input;
