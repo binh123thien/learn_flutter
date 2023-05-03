@@ -20,6 +20,7 @@ class CalculatorApp extends StatefulWidget {
 
 class _CalculatorAppState extends State<CalculatorApp> {
 //variables
+  var hideInput = false; // khi tính ra kết quả
   var input = '0';
   var output = '0';
 
@@ -58,9 +59,11 @@ class _CalculatorAppState extends State<CalculatorApp> {
         print(eval); // kiểm tra kết quả tính được
 
         output = eval.toString();
-        //đẩy giá trị vừa tính lên input
+        //gán giá trị vừa tính là input để tính tiếp
         print(output);
         input = output;
+        // ẩn input đi
+        hideInput = true;
       } catch (e) {
         output = 'Error';
       }
@@ -68,6 +71,7 @@ class _CalculatorAppState extends State<CalculatorApp> {
       if (input == "0") {
         input = buttonPress;
       } else {
+        hideInput = false;
         input = input + buttonPress;
       }
     }
@@ -107,7 +111,7 @@ class _CalculatorAppState extends State<CalculatorApp> {
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
                       Text(
-                        input,
+                        hideInput ? '' : input,
                         style: TextStyle(fontSize: 48, color: Colors.white),
                       ),
                       const SizedBox(
