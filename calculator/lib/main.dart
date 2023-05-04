@@ -23,14 +23,37 @@ class _CalculatorAppState extends State<CalculatorApp> {
   var hideInput = false; // khi tính ra kết quả
   var input = '0';
   var output = '0';
-
+  //tạo mảng để lọc trong mảng. Nếu có giá trị thì xử lý
+  var disable_button = [
+    "7",
+    "8",
+    "9",
+    '4',
+    '5',
+    '6',
+    '1',
+    '2',
+    '3',
+    '0',
+    '00',
+    '.',
+  ];
 //function click
   OnButtonClick(buttonPress) {
     //check click button thi in so
     print(buttonPress);
-    if (input != 0) {
+    //disable button số sau khi có đáp án
+    if (hideInput == true) {
+      print(disable_button);
       print('uuuuuuuuuuuuuuu');
-      input = input;
+      //lọc giá trị trong mảng> nếu buttonPress = 1 giá trị trong mảng thì không nhận buttonPress
+      for (int i = 0; i < disable_button.length; i++) {
+        print(i);
+        if (buttonPress == disable_button[i]) {
+          print('kkkkkkkkkkk');
+          buttonPress = '';
+        }
+      }
       hideInput = false;
     }
 
