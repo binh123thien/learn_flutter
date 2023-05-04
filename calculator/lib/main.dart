@@ -28,7 +28,14 @@ class _CalculatorAppState extends State<CalculatorApp> {
   OnButtonClick(buttonPress) {
     //check click button thi in so
     print(buttonPress);
+    if (input != 0) {
+      print('uuuuuuuuuuuuuuu');
+      input = input;
+      hideInput = false;
+    }
+
     if (buttonPress == "AC") {
+      hideInput = false;
       input = '0';
       output = '0';
     } else if (buttonPress == "⟵") {
@@ -59,14 +66,24 @@ class _CalculatorAppState extends State<CalculatorApp> {
         print(eval); // kiểm tra kết quả tính được
 
         output = eval.toString();
+        // trừ 2 đơn vị .0 đằng sau
+        if (output.endsWith('.0')) {
+          output = output.substring(0, output.length - 2);
+        }
         //gán giá trị vừa tính là input để tính tiếp
         print(output);
         input = output;
         // ẩn input đi
         hideInput = true;
+
+        //hiển thị TH: ban đầu input và output =0 bấm = mất input
+        if (input == "0") {
+          hideInput = false;
+        }
       } catch (e) {
         output = 'Error';
       }
+      //TH bấm mấy button khác.
     } else {
       if (input == "0") {
         input = buttonPress;
@@ -139,7 +156,10 @@ class _CalculatorAppState extends State<CalculatorApp> {
                     text: "⟵",
                     buttonBgColor: operatorColor,
                     tColor: orangeColor),
-                button(text: "", buttonBgColor: Colors.black),
+                button(
+                    text: "%",
+                    buttonBgColor: operatorColor,
+                    tColor: orangeColor),
                 button(
                     text: "/",
                     buttonBgColor: operatorColor,
@@ -181,11 +201,9 @@ class _CalculatorAppState extends State<CalculatorApp> {
             ),
             Row(
               children: [
-                button(
-                    text: "%",
-                    buttonBgColor: operatorColor,
-                    tColor: orangeColor),
+                // button(text: "", buttonBgColor: Colors.black),
                 button(text: "0"),
+                button(text: "00"),
                 button(text: "."),
                 button(text: "=", buttonBgColor: orangeColor)
               ],
