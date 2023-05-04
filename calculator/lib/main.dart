@@ -105,7 +105,7 @@ class _CalculatorAppState extends State<CalculatorApp> {
             Expanded(
               child: Container(
                 width: full_Width,
-                padding: EdgeInsets.all(12),
+                padding: EdgeInsets.all(8),
                 child: Column(
                     mainAxisAlignment: MainAxisAlignment.end,
                     crossAxisAlignment: CrossAxisAlignment.end,
