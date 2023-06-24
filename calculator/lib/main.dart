@@ -61,7 +61,9 @@ class _CalculatorAppState extends State<CalculatorApp> {
       hideInput = false;
       input = '0';
       output = '0';
-    } else if (buttonPress == "⟵") {
+    }
+    //sửa code
+    else if (buttonPress == "⟵") {
       if (input.isNotEmpty) {
         input = input.substring(0, input.length - 1);
         // input.isEmpty == ( input == '' )
